@@ -1,6 +1,6 @@
-import AuthForm from "../components/auth/AuthForm";
+import AuthForm from "../../components/auth/AuthForm";
 
-import authStyles from "../styles/auth.css";
+import authStyles from "../../styles/auth.css";
 
 export default function AuthPage() {
   return <AuthForm />;

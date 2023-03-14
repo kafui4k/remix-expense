@@ -1,5 +1,5 @@
-import ExpenseStatistics from "../components/expenses/ExpenseStatistics";
-import Chart from "../components/expenses/Chart";
+import ExpenseStatistics from "../../components/expenses/ExpenseStatistics";
+import Chart from "../../components/expenses/Chart";
 
 const DUMMY_EXPENSES = [
   {
