@@ -14,11 +14,17 @@ function ExpenseForm() {
   // const expenseData = useLoaderData();
   const params = useParams();
   const matches = useMatches();
+  const navigation = useNavigation();
+
   const expenses = matches
     .find((match) => match.id === "routes/__app/expenses")
     .data();
   const expenseData = expenses.find((expense) => expense.id === params.id);
-  const navigation = useNavigation();
+
+  if (params.id && !expenseData) {
+    // throw new Response();
+    return <p>Invalid Expense Id</p>;
+  }
 
   const defaultValues = expenseData
     ? {

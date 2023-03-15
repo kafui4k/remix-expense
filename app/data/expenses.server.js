@@ -13,7 +13,7 @@ export async function addExpense(expenseData) {
     return expense;
   } catch (error) {
     console.error(error);
-    throw error;
+    throw new Error("Failed to add new expense");
   }
 }
 
@@ -28,7 +28,7 @@ export async function getExpenses() {
     return expenses;
   } catch (error) {
     console.error(error);
-    throw error;
+    throw new Error("Failed to fetch all expenses data");
   }
 }
 
@@ -39,7 +39,7 @@ export async function getExpense(id) {
     return expense;
   } catch (error) {
     console.log(error);
-    throw error;
+    throw new Error("Failed to get expense data");
   }
 }
 
@@ -57,7 +57,7 @@ export async function updateExpense(id, expenseData) {
     });
   } catch (error) {
     console.error(error);
-    throw error;
+    throw new Error("Failed to update expense");
   }
 }
 
@@ -66,6 +66,6 @@ export async function deleteExpense(id) {
     prisma.expense.delete({ where: { id } });
   } catch (error) {
     console.error(error);
-    throw error;
+    throw new Error("Failed to delete expense data");
   }
 }
