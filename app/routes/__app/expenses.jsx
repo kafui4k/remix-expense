@@ -1,23 +1,13 @@
-import { Link, Outlet } from "@remix-run/react";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { FaDownload, FaPlus } from "react-icons/fa";
 import ExpensesList from "../../components/expenses/ExpensesList";
-
-const DUMMY_EXPENSES = [
-  {
-    id: "e1",
-    title: "First Expense",
-    amount: 12.99,
-    date: new Date().toISOString(),
-  },
-  {
-    id: "e2",
-    title: "Second Expense",
-    amount: 212.99,
-    date: new Date().toISOString(),
-  },
-];
+import { getExpenses } from "../../data/expenses.server";
 
 export default function ExpensesLayout() {
+  const expenses = useLoaderData();
+
+  console.log(expenses);
+
   return (
     <>
       <Outlet />
@@ -32,8 +22,14 @@ export default function ExpensesLayout() {
             <span>Load Raw Data</span>
           </a>
         </section>
-        <ExpensesList expenses={DUMMY_EXPENSES} />
+        <ExpensesList expenses={expenses} />
       </main>
     </>
   );
+}
+
+export async function loader() {
+  const expenses = await getExpenses();
+
+  return expenses;
 }
