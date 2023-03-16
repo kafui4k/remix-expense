@@ -37,3 +37,28 @@ export function validateExpenseInput(input) {
     throw validationErrors;
   }
 }
+
+function isvalidEmail(value) {
+  return value && value.includes("@");
+}
+
+function isValidPassword(value) {
+  return value && value.trim().length >= 7;
+}
+
+export function validateCredentials(input) {
+  let validationErrors = {};
+
+  if (!isvalidEmail(input.email)) {
+    validationErrors.email = "Invalid Email address";
+  }
+
+  if (!isValidPassword(input.email)) {
+    validationErrors.email =
+      "Invalid Password. Must be at least 7 chracters long.";
+  }
+
+  if (Object.keys(validationErrors).length > 0) {
+    throw validationErrors;
+  }
+}

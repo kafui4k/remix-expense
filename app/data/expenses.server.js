@@ -1,12 +1,13 @@
 import { prisma } from "./database.server";
 
-export async function addExpense(expenseData) {
+export async function addExpense(expenseData, userId) {
   try {
     const expense = await prisma.expense.create({
       data: {
         title: expenseData.title,
         amount: +expenseData.amount,
         date: new Date(expenseData.date),
+        User: { connect: { id: userId } },
       },
     });
 
@@ -17,9 +18,14 @@ export async function addExpense(expenseData) {
   }
 }
 
-export async function getExpenses() {
+export async function getExpenses(userId) {
+  if (!userId) {
+    throw new Error("Failed to fetch all expenses data");
+  }
+
   try {
     const expenses = await prisma.expense.findMany({
+      where: { userId },
       orderBy: {
         date: "desc",
       },
