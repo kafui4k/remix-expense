@@ -25,3 +25,9 @@ export function links() {
     },
   ];
 }
+
+export function headers() {
+  return {
+    "Cache-Control": "max-age=3600",
+  };
+}

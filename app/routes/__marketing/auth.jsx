@@ -42,3 +42,9 @@ export function links() {
     },
   ];
 }
+
+export function headers({ actionHeaders, loaderHeaders, parentHeaders }) {
+  return {
+    "Cache-Control": parentHeaders.get("Cache-Control"),
+  };
+}

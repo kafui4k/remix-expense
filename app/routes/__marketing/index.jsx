@@ -52,3 +52,9 @@ export function meta() {
     description: "Lorem ipsum...",
   };
 }
+
+export function headers() {
+  return {
+    "Cache-Control": "max-age=3600",
+  };
+}

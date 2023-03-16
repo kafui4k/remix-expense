@@ -45,3 +45,9 @@ export function meta() {
     description: "Lorem ipsum...",
   };
 }
+
+export function headers({ actionHeaders, loaderHeaders, parentHeaders }) {
+  return {
+    "Cache-Control": parentHeaders.get("Cache-Control"),
+  };
+}
