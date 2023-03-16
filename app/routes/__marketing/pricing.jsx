@@ -39,4 +39,9 @@ export default function PricingPage() {
   );
 }
 
-export function meta() {}
+export function meta() {
+  return {
+    title: "Pricing | Remix Expense",
+    description: "Lorem ipsum...",
+  };
+}
